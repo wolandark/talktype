@@ -560,7 +560,7 @@ def transcribe_api(wav_buffer: io.BytesIO) -> str:
         files = {"file": ("audio.wav", wav_buffer, "audio/wav")}
         data = {"language": config.language}
 
-    resp = requests.post(config.api, files=files, data=data, timeout=60)
+    resp = requests.post(config.api, files=files, data=data, timeout=240)
     resp.raise_for_status()
 
     # Handle both JSON {"text": "..."} and plain text responses
